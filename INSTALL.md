@@ -51,14 +51,14 @@ the `./runme.sh` command.
 
 * Configure the job as below:
   - Branch Sources > Add source > Git
-    - Project Repository: `https://gmacario@bitbucket.org/gmacario/ema-pipelines.git`
+    - Project Repository: `https://github.com/SOLARMA/solarma-pipelines.git`
     - Credentials: Add > Jenkins
       - Domain: Global credentials (unrestricted)
       - Kind: Username with password
         - Scope: Global (Jenkins, nodes, items, all child items, etc)
         - Username: `gmacario`
         - Password: `xxxx` (replace with the correct password)
-        - ID: `bitbucket_gmacario`
+        - ID: `github_gmacario`
       - Click **Add**
     - Click **Save**
 
