@@ -18,8 +18,7 @@ pipeline {
       stage('Build') {
           steps {
               // echo 'This is a minimal pipeline.'
-              echo 'TODO: mvn -Dmaven.test.failure.ignore=true install'
-              // sh 'mvn -Dmaven.test.failure.ignore=true install'
+              sh 'mvn -Dmaven.test.failure.ignore=true install'
           }
           post {
               success {
