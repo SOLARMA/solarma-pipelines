@@ -3,8 +3,9 @@
 pipeline {
   agent {
     docker {
-      // label 'xxx'
       image 'ubuntu:16.04'
+      args '-u 0:0'
+      // label 'xxx'
       // args ‘-v /tmp:/tmp -p 80:80’
     }
   }
