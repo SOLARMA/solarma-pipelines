@@ -2,12 +2,13 @@
 
 pipeline {
   agent {
-    docker {
-      image 'ubuntu:16.04'
-      args '-u 0:0'
-      // label 'xxx'
-      // args ‘-v /tmp:/tmp -p 80:80’
-    }
+    // docker {
+    //   image 'ubuntu:16.04'
+    //   args '-u 0:0'
+    //   // label 'xxx'
+    //   // args ‘-v /tmp:/tmp -p 80:80’
+    // }
+    dockerfile true
   }
   environment {
     TERM = 'linux'
@@ -27,3 +28,5 @@ pipeline {
     }
   }
 }
+
+// EOF
