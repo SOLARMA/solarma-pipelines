@@ -25,8 +25,10 @@ pipeline {
     }
     stage('Build') {
       agent { 
-        docker 'custom-image:local'
-        args '-u 0:0'
+        docker {
+          image 'custom-image:local'
+          args '-u 0:0'
+        }
       }
       steps {
         // echo 'This is a minimal pipeline.'
