@@ -1,10 +1,10 @@
 // See https://github.com/volumio/Build
 
 pipeline {
-  agent {
-    label 'docker'
-    // dockerfile true
-  }
+  // agent {
+  //  label 'docker'
+  //  // dockerfile true
+  // }
   environment {
     TERM = 'linux'
   }
@@ -13,6 +13,7 @@ pipeline {
   }
   stages {
     stage('Build custom-image:local') {
+      agent { label 'docker' }
       steps {
         sh 'docker build -t custom-image:local .'
       }
