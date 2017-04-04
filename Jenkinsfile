@@ -7,13 +7,19 @@ pipeline {
       jdk 'jdk8'
   }
   stages {
-      stage ('Initialize') {
+      stage('Initialize') {
             steps {
                 sh '''
                     echo "PATH = ${PATH}"
                     echo "M2_HOME = ${M2_HOME}"
                 ''' 
             }
+      }
+      stage('Checkout') {
+          steps {
+              echo 'TODO: Checkout'
+              git(url: 'https://github.com/bitwiseman/junit-plugin')
+          }
       }
       stage('Build') {
           steps {
