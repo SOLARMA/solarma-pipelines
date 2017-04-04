@@ -12,13 +12,13 @@ pipeline {
     stage('Build custom-image:local') {
       agent { label 'docker' }
       steps {
-        sh 'docker build -t custom-image:local .'
+        sh 'docker build -t volumio-buildenv:local docker/'
       }
     }
     stage('Build') {
       agent { 
         docker {
-          image 'custom-image:local'
+          image 'volumio-buildenv:local'
           args '-u 0:0'
         }
       }
