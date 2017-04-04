@@ -1,11 +1,7 @@
 // See https://github.com/volumio/Build
 
 pipeline {
-  agent {
-    any
-    //  label 'docker'
-    //  // dockerfile true
-  }
+  agent any
   environment {
     TERM = 'linux'
   }
