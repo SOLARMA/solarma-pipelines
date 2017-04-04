@@ -12,8 +12,10 @@ pipeline {
     buildDiscarder(logRotator(numToKeepStr: '2'))
   }
   stages {
-    stage('Build custom Docker image') {
-      sh 'docker build -t custom-image:local .'
+    stage('Build custom-image:local') {
+      steps {
+        sh 'docker build -t custom-image:local .'
+      }
     }
     stage('Checkout') {
       steps {
