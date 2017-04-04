@@ -23,7 +23,10 @@ pipeline {
       }
     }
     stage('Build') {
-      agent { docker 'custom-image:local' }
+      agent { 
+        docker 'custom-image:local'
+        args '-u 0:0'
+      }
       steps {
         // echo 'This is a minimal pipeline.'
         // sh "TERM=linux ./build.sh -b armv7 -d udooneo -v 2.0"
