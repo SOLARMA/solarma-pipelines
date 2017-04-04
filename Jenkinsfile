@@ -18,6 +18,7 @@ pipeline {
       stage('Checkout') {
           steps {
               echo 'TODO: Checkout'
+              git(url: 'https://github.com/bitwiseman/junit-plugin')
           }
       }
       stage('Build') {
