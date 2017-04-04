@@ -20,7 +20,7 @@ pipeline {
       steps {
         // echo 'This is a minimal pipeline.'
         // sh "TERM=linux ./build.sh -b armv7 -d udooneo -v 2.0"
-        sh "./build.sh -b armv7 -d udooneo -v 2.0"
+        sh "id && pwd && ./build.sh -b armv7 -d udooneo -v 2.0"
       }
     }
   }
