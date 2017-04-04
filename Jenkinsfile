@@ -1,3 +1,5 @@
+#!groovy
+
 // See https://github.com/volumio/Build
 
 pipeline {
