@@ -7,6 +7,9 @@ pipeline {
   environment {
     TERM = 'linux'
   }
+  options {
+    buildDiscarder(logRotator(numToKeepStr: '2'))
+  }
   stages {
     stage('Checkout') {
       steps {
