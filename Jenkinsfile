@@ -29,7 +29,7 @@ pipeline {
         git (url: 'https://github.com/SOLARMA/volumio-Build')
 
         // sh "TERM=linux ./build.sh -b armv7 -d udooneo -v 2.0"
-        sh "id && pwd && ./build.sh -b armv7 -d udooneo -v 2.0"
+        sh "id && pwd && bash -xe ./build.sh -b armv7 -d udooneo -v 2.0"
       }
     }
   }
