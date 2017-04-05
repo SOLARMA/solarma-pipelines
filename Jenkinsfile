@@ -7,7 +7,10 @@ pipeline {
     stage('Build') {
       steps {
         echo 'Building..'
-        emailext(subject: 'Test Subject', body: 'Test Body', to: 'gianpaolo_macario@mentor.com')
+        emailext(subject: 'Test Email', 
+                 body: 'Hello, This is a test email.', 
+                 to: 'gmacario@gmail.com'
+                )
       }
     }
     stage('Test') {
