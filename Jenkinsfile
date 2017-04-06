@@ -23,7 +23,7 @@ pipeline {
           image 'volumio-buildenv:local'
           // Run container as root and with CAP_SYS_ADMIN capability
           // See http://stackoverflow.com/questions/36553617/how-do-i-mount-bind-inside-a-docker-container
-          args '-u 0:0 --cap-add=SYS_ADMIN'
+          args '-u 0:0 --privileged --cap-add=SYS_ADMIN'
         }
       }
       steps {
