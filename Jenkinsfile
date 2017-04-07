@@ -39,7 +39,14 @@ pipeline {
         // sh 'mount /dev ${PWD}/build/armv7/root/dev -o bind && mount && umount ${PWD}/build/armv7/root/dev'
 
         // sh "TERM=linux ./build.sh -b armv7 -d udooneo -v 2.0"
-        sh "id && pwd && bash -xe ./build.sh -b armv7 -d udooneo -v 2.0"
+        sh '''#!/bin/bash -xe
+
+id
+pwd
+# file build/xxx
+bash -xe ./build.sh -b armv7 -d udooneo -v 2.0
+# EOF
+'''
       }
     }
   }
