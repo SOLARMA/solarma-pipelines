@@ -30,16 +30,44 @@ pipeline {
         // git (url: 'https://github.com/volumio/Build')
         git (url: 'https://github.com/SOLARMA/volumio-Build')
         
-        // DEBUG https://github.com/SOLARMA/solarma-pipelines/issues/1
+        echo 'DEBUG 1'
         sh 'mount'
         sh 'which mount'
         sh 'ls -la $(which mount)'
         sh 'ls -la /dev'
-        // sh 'ls -la build/armv7/root/dev'
-        // sh 'mount /dev ${PWD}/build/armv7/root/dev -o bind && mount && umount ${PWD}/build/armv7/root/dev'
+        
+        echo 'INFO: Checking whether module binfmt_misc is installed..'
+        // sh 'modprobe binfmt_misc'
+        sh '''#!/bin/bash
+
+grep -w binfmt_misc /proc/modules >/dev/null || {
+    echo "Please execute on your Docker Host: \"sudo modprobe binfmt_misc\""
+    exit 1
+}
+'''
+
+        echo 'DEBUG 2'
+        sh 'ls -la build/armv7/root || true'
+        sh 'ls -la build/armv7/root/bin/bash || true'
+        sh 'file build/armv7/root/bin/bash || true'
+        sh 'which find'
+
+        // Configure qemu-arm
+        // See http://blog.ubergarm.com/run-arm-docker-images-on-x86_64-hosts/
+        sh 'update-binfmts --enable qemu-arm'
+        sh 'update-binfmts --display qemu-arm'
 
         // sh "TERM=linux ./build.sh -b armv7 -d udooneo -v 2.0"
-        sh "id && pwd && bash -xe ./build.sh -b armv7 -d udooneo -v 2.0"
+        sh '''#!/bin/bash -xe
+
+# DEBUG
+id
+pwd
+
+bash -xe ./build.sh -b armv7 -d udooneo -v 2.0 || true
+
+# EOF
+'''
       }
     }
   }
