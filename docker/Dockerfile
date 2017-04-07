@@ -8,7 +8,7 @@ RUN apt-get update && \
         module-init-tools \
         qemu-user-static samba debootstrap \
         parted dosfstools qemu binfmt-support \
-        qemu-utils sudo
+        qemu-utils sudo findutils
 
 USER root
 
