@@ -38,12 +38,14 @@ pipeline {
         // sh 'ls -la build/armv7/root/dev'
         // sh 'mount /dev ${PWD}/build/armv7/root/dev -o bind && mount && umount ${PWD}/build/armv7/root/dev'
         
+        echo 'INFO: Checking whether module binfmt_misc is installed..'
+        // sh 'modprobe binfmt_misc'
+        sh 'lsmod | grep binfmt_misc || echo "Please execute on your Docker Host: \"sudo modprobe binfmt_misc\""'
+
+        // DEBUG
         sh 'ls -la build/armv7/root || true'
         sh 'ls -la build/armv7/root/bin/bash || true'
         sh 'file build/armv7/root/bin/bash || true'
-
-        // sh 'modprobe binfmt_misc'
-        sh 'lsmod | grep binfmt_misc || echo "Please exec on your HOST: \"sudo modprobe binfmt_misc\""'
 
         // Configure qemu-arm
         // See http://blog.ubergarm.com/run-arm-docker-images-on-x86_64-hosts/
