@@ -66,8 +66,20 @@ pwd
 
 bash -xe ./build.sh -b armv7 -d udooneo -v 2.0 || true
 
+# DEBUG
+ls -la
+
 # EOF
 '''
+        echo 'DEBUG 3'
+        sh 'mount'
+        sh 'pwd'
+        sh 'df -h'
+        sh 'ls -la'
+        sh 'ls -la build'
+        sh 'ls -la build/armv7'
+        sh 'ls -la build/armv7/root'
+        
       }
     }
   }
