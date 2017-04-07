@@ -30,13 +30,11 @@ pipeline {
         // git (url: 'https://github.com/volumio/Build')
         git (url: 'https://github.com/SOLARMA/volumio-Build')
         
-        // DEBUG https://github.com/SOLARMA/solarma-pipelines/issues/1
+        echo 'DEBUG 1'
         sh 'mount'
         sh 'which mount'
         sh 'ls -la $(which mount)'
         sh 'ls -la /dev'
-        // sh 'ls -la build/armv7/root/dev'
-        // sh 'mount /dev ${PWD}/build/armv7/root/dev -o bind && mount && umount ${PWD}/build/armv7/root/dev'
         
         echo 'INFO: Checking whether module binfmt_misc is installed..'
         // sh 'modprobe binfmt_misc'
@@ -48,10 +46,11 @@ grep -w binfmt_misc /proc/modules >/dev/null || {
 }
 '''
 
-        // DEBUG
+        echo 'DEBUG 2'
         sh 'ls -la build/armv7/root || true'
         sh 'ls -la build/armv7/root/bin/bash || true'
         sh 'file build/armv7/root/bin/bash || true'
+        sh 'which find'
 
         // Configure qemu-arm
         // See http://blog.ubergarm.com/run-arm-docker-images-on-x86_64-hosts/
