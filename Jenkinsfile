@@ -37,14 +37,21 @@ pipeline {
         sh 'ls -la /dev'
         // sh 'ls -la build/armv7/root/dev'
         // sh 'mount /dev ${PWD}/build/armv7/root/dev -o bind && mount && umount ${PWD}/build/armv7/root/dev'
+        
+        sh 'ls -la build/armv7/root || true'
+        sh 'ls -la build/armv7/root/bin/bash || true'
+        sh 'file build/armv7/root/bin/bash || true'
 
         // sh "TERM=linux ./build.sh -b armv7 -d udooneo -v 2.0"
         sh '''#!/bin/bash -xe
 
+# DEBUG
 id
 pwd
-# file build/xxx
-bash -xe ./build.sh -b armv7 -d udooneo -v 2.0
+ls -la build/armv7/root || true
+
+bash -xe ./build.sh -b armv7 -d udooneo -v 2.0 || true
+
 # EOF
 '''
       }
