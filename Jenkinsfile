@@ -44,7 +44,7 @@ pipeline {
 
 lsmod | grep binfmt_misc >/dev/null || {
   echo "Please execute on your Docker Host: \"sudo modprobe binfmt_misc\""
-  return true
+  exit 1
 }
 '''
 
