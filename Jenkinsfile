@@ -40,7 +40,13 @@ pipeline {
         
         echo 'INFO: Checking whether module binfmt_misc is installed..'
         // sh 'modprobe binfmt_misc'
-        sh 'lsmod | grep binfmt_misc || { echo "Please execute on your Docker Host: \"sudo modprobe binfmt_misc\""; true }'
+        sh '''#!/bin/sh
+
+lsmod | grep binfmt_misc >/dev/null || {
+  echo "Please execute on your Docker Host: \"sudo modprobe binfmt_misc\""
+  return true
+}
+```
 
         // DEBUG
         sh 'ls -la build/armv7/root || true'
