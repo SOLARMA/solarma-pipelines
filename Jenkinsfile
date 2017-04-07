@@ -41,6 +41,11 @@ pipeline {
         sh 'ls -la build/armv7/root || true'
         sh 'ls -la build/armv7/root/bin/bash || true'
         sh 'file build/armv7/root/bin/bash || true'
+        
+        // Configure qemu-arm
+        // See http://blog.ubergarm.com/run-arm-docker-images-on-x86_64-hosts/
+        sh 'update-binfmts --enable qemu-arm'
+        sh 'update-binfmts --display qemu-arm'
 
         // sh "TERM=linux ./build.sh -b armv7 -d udooneo -v 2.0"
         sh '''#!/bin/bash -xe
@@ -48,7 +53,6 @@ pipeline {
 # DEBUG
 id
 pwd
-ls -la build/armv7/root || true
 
 bash -xe ./build.sh -b armv7 -d udooneo -v 2.0 || true
 
