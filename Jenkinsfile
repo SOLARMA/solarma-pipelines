@@ -41,7 +41,9 @@ pipeline {
         sh 'ls -la build/armv7/root || true'
         sh 'ls -la build/armv7/root/bin/bash || true'
         sh 'file build/armv7/root/bin/bash || true'
-        
+
+        sh 'modprobe binfmt_misc || true'
+
         // Configure qemu-arm
         // See http://blog.ubergarm.com/run-arm-docker-images-on-x86_64-hosts/
         sh 'update-binfmts --enable qemu-arm'
