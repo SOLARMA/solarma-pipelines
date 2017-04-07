@@ -42,9 +42,9 @@ pipeline {
         // sh 'modprobe binfmt_misc'
         sh '''#!/bin/bash
 
-lsmod | grep binfmt_misc >/dev/null || {
-  echo "Please execute on your Docker Host: \"sudo modprobe binfmt_misc\""
-  exit 1
+grep -w binfmt_misc /proc/modules >/dev/null || {
+    echo "Please execute on your Docker Host: \"sudo modprobe binfmt_misc\""
+    exit 1
 }
 '''
 
