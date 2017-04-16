@@ -1,8 +1,10 @@
-// Credits:
-// https://jenkins.io/blog/2017/02/07/declarative-maven-project/
-
 pipeline {
-  agent any
+  agent {
+    docker {
+      image 'gmacario/build-yocto:latest'
+    }
+    
+  }
   stages {
     stage('Build') {
       steps {
