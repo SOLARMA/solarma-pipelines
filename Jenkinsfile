@@ -25,6 +25,7 @@ pipeline {
       stage('Build') {
           steps {
               sh 'echo $JAVA_HOME'
+              sh 'printenv JAVA_HOME'
               sh 'mvn -Dmaven.test.failure.ignore=true install'
           }
           post {
